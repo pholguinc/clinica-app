@@ -1,0 +1,4 @@
+#Tue Jul 04 20:43:50 PET 2023
+base.0=/run/media/zaphkiel/DATOS/Github/clinica/frontend/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
