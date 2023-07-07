@@ -9,9 +9,8 @@ import '../constants.dart';
 import '../screens/modules/medicines/view/medicine_screen.dart';
 
 class HomeContent extends StatelessWidget {
-  const HomeContent({
-    super.key,
-  });
+  final String role;
+  const HomeContent({ Key? key, required this.role}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +43,7 @@ class HomeContent extends StatelessWidget {
                 subtitle: Padding(
                   padding: const EdgeInsets.only(left: 30),
                   child: Text(
-                    'Subtitle Text',
+                   'Ahora está como "${role}"',
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           color: Colors.white54,
                         ),
@@ -93,7 +92,7 @@ class HomeContent extends StatelessWidget {
                     logger.d('Button tapped!');
                   },
                   child: itemDashboard(context, 'Citas', Icons.date_range,
-                      Colors.deepOrange, 40, () => const MedicineScreen()),
+                      Colors.deepOrange, 40, () => const FormAddDate()),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -132,7 +131,7 @@ class HomeContent extends StatelessWidget {
                     logger.d('Button tapped!');
                   },
                   child: itemDashboard(context, 'Contactos', Icons.phone,
-                      Colors.pinkAccent, 40, () => FormAddDate()),
+                      Colors.pinkAccent, 40, () => const FormAddDate()),
                 ),
               ],
             ),

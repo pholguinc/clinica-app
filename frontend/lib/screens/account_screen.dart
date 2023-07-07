@@ -15,13 +15,7 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  PreferredSize(
-        preferredSize:  const Size.fromHeight(kToolbarHeight),
-        child: PageAppBar(pageTitle: 'Cuenta', route: () => const HomeScreen())
-
-
-      ),
-      
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20),

@@ -2,10 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:frontend/screens/data_scrren.dart';
+import 'package:frontend/screens/home_screen.dart';
 import 'package:frontend/utils/preferences.dart';
 import 'package:frontend/widgets/animated_textfield.dart';
 import 'package:frontend/widgets/home_content.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../widgets/custom_clip_path.dart';
 import 'package:http/http.dart' as http;
@@ -66,12 +68,15 @@ class LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  void navigateToHomeContent(String token) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => NavScreen(token: token)),
-    );
-  }
+void navigateToHomeContent(String token) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => HomeScreen(token: token), // Pass the name argument here
+    ),
+  );
+}
+
 
 
   @override

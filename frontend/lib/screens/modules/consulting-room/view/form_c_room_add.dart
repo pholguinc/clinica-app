@@ -125,7 +125,7 @@ class _FormcroomScreenState extends State<FormAddcRoom> {
           },
         ),
         title: Text(
-          'Agregar Medicina',
+          'Agregar Consultorio',
           style: GoogleFonts.poppins(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -200,8 +200,8 @@ class _FormcroomScreenState extends State<FormAddcRoom> {
                                   const SizedBox(height: 20.0),
                                   TextFieldForm(
                                     controller: numConsultController,
-                                    fieldName: 'Descripción',
-                                    icon: Icons.description,
+                                    fieldName: 'Numerous de consultorio',
+                                    icon: Icons.health_and_safety,
                                     prefixIconColor: colorPrimary,
                                     textValidator: 'Rellene los campos vacíos',
                                   ),

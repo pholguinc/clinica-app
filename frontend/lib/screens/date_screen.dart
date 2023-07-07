@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/constants.dart';
 import 'package:frontend/screens/home_screen.dart';
 import 'package:frontend/screens_details/date_details.dart';
+import 'package:frontend/widgets/home_content.dart';
 import 'package:frontend/widgets/nav_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -21,11 +22,8 @@ class _DateScreenState extends State<DateScreen> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      drawer: Navbar(route: () => const HomeScreen()),
-      appBar:  PreferredSize(
-        preferredSize:  const Size.fromHeight(kToolbarHeight),
-        child: PageAppBar(pageTitle: 'Citas', route: () => const HomeScreen())
-      ),
+      drawer: Navbar(route: () => const HomeContent(role: '',)),
+      appBar: AppBar(),
       body: Column(
           children: <Widget>[
             Container(

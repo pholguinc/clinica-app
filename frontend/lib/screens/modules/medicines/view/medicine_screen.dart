@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/animations/page_transition_animation.dart';
+import 'package:frontend/constants.dart';
 import 'package:frontend/screens/modules/medicines/model/medicine_model.dart';
 import 'package:frontend/screens/home_screen.dart';
 import 'package:frontend/screens/modules/medicines/service/medicine_service.dart';
@@ -23,12 +24,12 @@ class _MedicineScreenState extends State<MedicineScreen> {
   late Color errorColor = Colors.red;
 
   bool loading = true;
+  late String token;
   late List<MedicineModel> medicineData;
   late List<MedicineModel> filteredMedicineData;
   TextEditingController searchController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-
 
   @override
   void initState() {
@@ -38,28 +39,28 @@ class _MedicineScreenState extends State<MedicineScreen> {
     fetchData();
   }
 
- Future<void> fetchData() async {
-  setState(() {
-    loading = true; // Set loading state to true before fetching data
-  });
-
-  try {
-    List<MedicineModel> medicines = await MedicineService.fetchData();
-
-    // Simulate a delayed loading state for 2 seconds
-    await Future.delayed(const Duration(seconds: 1));
-
+  Future<void> fetchData() async {
     setState(() {
-      medicineData = medicines;
-      filteredMedicineData = medicines;
-      loading = false; // Set loading state to false after data is fetched
+      loading = true; // Set loading state to true before fetching data
     });
-  } catch (e) {
-    setState(() {
-      loading = false; // Set loading state to false on error
-    });
+
+    try {
+      List<MedicineModel> medicines = await MedicineService.fetchData();
+
+      // Simulate a delayed loading state for 2 seconds
+      await Future.delayed(const Duration(seconds: 1));
+
+      setState(() {
+        medicineData = medicines;
+        filteredMedicineData = medicines;
+        loading = false; // Set loading state to false after data is fetched
+      });
+    } catch (e) {
+      setState(() {
+        loading = false; // Set loading state to false on error
+      });
+    }
   }
-}
 
   Future<void> deleteData(String medicineId) async {
     final success = await MedicineService.deleteData(medicineId);
@@ -118,11 +119,37 @@ class _MedicineScreenState extends State<MedicineScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Navbar(route: () => const HomeScreen()),
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: PageAppBar(pageTitle: 'Buscar Medicinas', route: () => const HomeScreen()),
+      appBar: AppBar(
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
       ),
+      title: Text(
+        "Medicinas",
+        style: GoogleFonts.poppins(
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+        ),
+      ),
+      iconTheme: const IconThemeData(color: Colors.white),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 5.0),
+          child: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+        ),
+      ],
+      centerTitle: true,
+      backgroundColor: colorPrimary,
+      automaticallyImplyLeading: false,
+    ),
       body: SizedBox(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -397,4 +424,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
       ),
     );
   }
+
+
+
 }

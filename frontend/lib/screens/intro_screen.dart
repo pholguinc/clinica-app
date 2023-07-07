@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:frontend/screens/home_screen.dart';
+import 'package:frontend/screens/login_screen.dart';
+import 'package:frontend/widgets/home_content.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class IntroScreen extends StatefulWidget {
@@ -119,7 +121,7 @@ class _IntroScreenState extends State<IntroScreen> {
             Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const HomeScreen(),
+              builder: (context) => const LoginScreen(),
             ),
           );
           },
@@ -127,7 +129,7 @@ class _IntroScreenState extends State<IntroScreen> {
             Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const HomeScreen(),
+              builder: (context) => const LoginScreen(),
             ),
           );
           },

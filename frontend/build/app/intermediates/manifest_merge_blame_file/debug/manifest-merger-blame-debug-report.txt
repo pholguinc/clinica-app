@@ -13,17 +13,17 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->/run/media/zaphkiel/DATOS/Github/clinica/frontend/android/app/src/main/AndroidManifest.xml:4:1-62
-15-->/run/media/zaphkiel/DATOS/Github/clinica/frontend/android/app/src/main/AndroidManifest.xml:4:18-60
+15-->/run/media/zaphkiel/DATOS/Github/clinica-app/frontend/android/app/src/main/AndroidManifest.xml:4:1-62
+15-->/run/media/zaphkiel/DATOS/Github/clinica-app/frontend/android/app/src/main/AndroidManifest.xml:4:18-60
 16    <uses-permission android:name="android.permission.CAMERA" />
-16-->/run/media/zaphkiel/DATOS/Github/clinica/frontend/android/app/src/main/AndroidManifest.xml:5:1-60
-16-->/run/media/zaphkiel/DATOS/Github/clinica/frontend/android/app/src/main/AndroidManifest.xml:5:18-58
+16-->/run/media/zaphkiel/DATOS/Github/clinica-app/frontend/android/app/src/main/AndroidManifest.xml:5:1-60
+16-->/run/media/zaphkiel/DATOS/Github/clinica-app/frontend/android/app/src/main/AndroidManifest.xml:5:18-58
 17    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-17-->/run/media/zaphkiel/DATOS/Github/clinica/frontend/android/app/src/main/AndroidManifest.xml:6:1-75
-17-->/run/media/zaphkiel/DATOS/Github/clinica/frontend/android/app/src/main/AndroidManifest.xml:6:18-73
+17-->/run/media/zaphkiel/DATOS/Github/clinica-app/frontend/android/app/src/main/AndroidManifest.xml:6:1-75
+17-->/run/media/zaphkiel/DATOS/Github/clinica-app/frontend/android/app/src/main/AndroidManifest.xml:6:18-73
 18    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-18-->/run/media/zaphkiel/DATOS/Github/clinica/frontend/android/app/src/main/AndroidManifest.xml:7:1-76
-18-->/run/media/zaphkiel/DATOS/Github/clinica/frontend/android/app/src/main/AndroidManifest.xml:7:18-74
+18-->/run/media/zaphkiel/DATOS/Github/clinica-app/frontend/android/app/src/main/AndroidManifest.xml:7:1-76
+18-->/run/media/zaphkiel/DATOS/Github/clinica-app/frontend/android/app/src/main/AndroidManifest.xml:7:18-74
 19
 20    <permission
 20-->[androidx.core:core:1.10.1] /home/zaphkiel/.gradle/caches/transforms-3/74ce1c2874f96f8b7a1ecf0398e5d8f0/transformed/core-1.10.1/AndroidManifest.xml:22:5-24:47
@@ -81,21 +81,21 @@
 67            android:value="2" />
 68
 69        <provider
-69-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-18:20
+69-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica-app/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-18:20
 70            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-70-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-82
+70-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica-app/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-82
 71            android:authorities="com.example.clinica.flutter.image_provider"
-71-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-74
+71-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica-app/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-74
 72            android:exported="false"
-72-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-37
+72-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica-app/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-37
 73            android:grantUriPermissions="true" >
-73-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-47
+73-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica-app/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-47
 74            <meta-data
-74-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-17:75
+74-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica-app/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-17:75
 75                android:name="android.support.FILE_PROVIDER_PATHS"
-75-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:16:17-67
+75-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica-app/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:16:17-67
 76                android:resource="@xml/flutter_image_picker_file_paths" />
-76-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:17:17-72
+76-->[:image_picker_android] /run/media/zaphkiel/DATOS/Github/clinica-app/frontend/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:17:17-72
 77        </provider>
 78
 79        <uses-library

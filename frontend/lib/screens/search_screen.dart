@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/models/doctor_model.dart';
 import 'package:frontend/screens/doctor_profile_screen.dart';
 import 'package:frontend/screens/home_screen.dart';
+import 'package:frontend/widgets/home_content.dart';
 import 'package:frontend/widgets/nav_bar.dart';
 import 'package:frontend/widgets/page_app_bar.dart';
 import 'package:http/http.dart' as http;
@@ -108,11 +109,8 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Navbar(route: () => const HomeScreen()),
-      appBar:  PreferredSize(
-        preferredSize:  const Size.fromHeight(kToolbarHeight),
-        child: PageAppBar(pageTitle: 'Buscar', route: () => const HomeScreen())
-      ),
+      drawer: Navbar(route: () => const HomeContent(role: '',)),
+      appBar: AppBar(),
       body: SizedBox(
         child: Padding(
           padding: const EdgeInsets.all(20.0),

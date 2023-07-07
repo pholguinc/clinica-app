@@ -4,7 +4,7 @@
             "outputFile": "com.example.frontendv2.app-mergeDebugResources-20:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/run/media/zaphkiel/DATOS/Github/clinica/frontend/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/run/media/zaphkiel/DATOS/Github/clinica-app/frontend/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

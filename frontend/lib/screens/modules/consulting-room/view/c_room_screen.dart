@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/animations/page_transition_animation.dart';
-import 'package:frontend/screens/home_screen.dart';
+import 'package:frontend/constants.dart';
 import 'package:frontend/screens/modules/consulting-room/model/c_room_model.dart';
 import 'package:frontend/screens/modules/consulting-room/service/c_room_service.dart';
 import 'package:frontend/screens/modules/consulting-room/view/form_c_room_add.dart';
 import 'package:frontend/screens/modules/consulting-room/view/form_c_room_put.dart';
 import 'package:frontend/utils/alerts.dart';
-import 'package:frontend/widgets/nav_bar.dart';
-import 'package:frontend/widgets/page_app_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CroomScreen extends StatefulWidget {
@@ -116,12 +114,38 @@ class _CroomScreenState extends State<CroomScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: Navbar(route: () => const HomeScreen()),
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: PageAppBar(pageTitle: 'Buscar Consultorios', route: () => const HomeScreen()),
+      return Scaffold(
+      appBar: AppBar(
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
       ),
+      title: Text(
+        "Consultorios",
+        style: GoogleFonts.poppins(
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+        ),
+      ),
+      iconTheme: const IconThemeData(color: Colors.white),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 5.0),
+          child: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+        ),
+      ],
+      centerTitle: true,
+      backgroundColor: colorPrimary,
+      automaticallyImplyLeading: false,
+    ),
       body: SizedBox(
         child: Padding(
           padding: const EdgeInsets.all(20.0),

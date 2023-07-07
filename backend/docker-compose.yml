@@ -1,0 +1,21 @@
+version: '3.1'
+
+
+services:
+  app_nest:
+    image : postgres:15.1
+    container_name: app_nest
+    restart: allways
+    environment:
+      SERVER_PORT: 3000
+      DB_HOST: localhost
+      DB_PORT: 5432
+      DB_NAME: clinica-api
+      DB_USERNAME: postgres
+      DB_PASSWORD: root
+      JWT_SECRET: token@nestjs
+      API_KEY : 'api€nest'
+    volumes: 
+    - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      -5432:5432

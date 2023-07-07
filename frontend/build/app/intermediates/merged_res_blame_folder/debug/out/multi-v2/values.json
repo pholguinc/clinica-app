@@ -93,6 +93,25 @@
                     }
                 },
                 {
+                    "source": "/run/media/zaphkiel/DATOS/Github/clinica-app/frontend/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,818",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "476,982"
+                    },
+                    "to": {
+                        "startLines": "108,112",
+                        "startColumns": "4,4",
+                        "startOffsets": "6436,6617",
+                        "endLines": "111,114",
+                        "endColumns": "12,12",
+                        "endOffsets": "6612,6781"
+                    }
+                },
+                {
                     "source": "/home/zaphkiel/.gradle/caches/transforms-3/64c469bacade2d2c35fa70c73092608c/transformed/lifecycle-viewmodel-2.6.1/res/values/values.xml",
                     "from": {
                         "startLines": "2",
@@ -124,25 +143,6 @@
                         "startOffsets": "4593,5537",
                         "endColumns": "41,59",
                         "endOffsets": "4630,5592"
-                    }
-                },
-                {
-                    "source": "/run/media/zaphkiel/DATOS/Github/clinica/frontend/android/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "173,818",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "476,982"
-                    },
-                    "to": {
-                        "startLines": "108,112",
-                        "startColumns": "4,4",
-                        "startOffsets": "6436,6617",
-                        "endLines": "111,114",
-                        "endColumns": "12,12",
-                        "endOffsets": "6612,6781"
                     }
                 }
             ]

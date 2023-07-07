@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/animations/page_transition_animation.dart';
+import 'package:frontend/constants.dart';
 import 'package:frontend/screens/modules/services/model/service_model.dart';
 import 'package:frontend/screens/modules/services/service/service_service.dart';
+import 'package:frontend/screens/modules/services/view/form_service_add_screen.dart';
 import 'package:frontend/screens/modules/services/view/form_service_put_screen.dart';
 import 'package:frontend/utils/alerts.dart';
+import 'package:frontend/widgets/home_content.dart';
 import 'package:frontend/widgets/page_app_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 import '../../../../widgets/nav_bar.dart';
 import '../../../home_screen.dart';
@@ -22,6 +26,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
   late Color successColor = const Color.fromARGB(255, 88, 170, 21);
   late Color errorColor = Colors.red;
 
+  
   bool loading = true;
   late List<ServiceModel> serviceData;
   late List<ServiceModel> filteredServiceData;
@@ -29,7 +34,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
 
-   @override
+  @override
   void initState() {
     super.initState();
     serviceData = [];
@@ -39,26 +44,26 @@ class _ServiceScreenState extends State<ServiceScreen> {
 
 
   Future<void> fetchData() async {
-  setState(() {
-    loading = true; 
-  });
-
-  try {
-    List<ServiceModel> medicines = await ServiceServ.fetchData();
-
-    await Future.delayed(const Duration(seconds: 1));
-
     setState(() {
-      serviceData = medicines;
-      filteredServiceData = medicines;
-      loading = false; 
+      loading = true;
     });
-  } catch (e) {
-    setState(() {
-      loading = false; // Set loading state to false on error
-    });
+
+    try {
+      List<ServiceModel> medicines = await ServiceServ.fetchData();
+
+      await Future.delayed(const Duration(seconds: 1));
+
+      setState(() {
+        serviceData = medicines;
+        filteredServiceData = medicines;
+        loading = false;
+      });
+    } catch (e) {
+      setState(() {
+        loading = false; // Set loading state to false on error
+      });
+    }
   }
-}
 
   Future<void> deleteData(String serviceId) async {
     final success = await ServiceServ.deleteData(serviceId);
@@ -66,8 +71,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
     if (success) {
       setState(() {
         serviceData.removeWhere((service) => service.id == serviceId);
-        filteredServiceData
-            .removeWhere((service) => service.id == serviceId);
+        filteredServiceData.removeWhere((service) => service.id == serviceId);
       });
 
       // ignore: use_build_context_synchronously
@@ -88,9 +92,8 @@ class _ServiceScreenState extends State<ServiceScreen> {
       });
     } else {
       List<ServiceModel> results = serviceData
-          .where((service) => service.name
-              .toLowerCase()
-              .contains(enteredKeyword.toLowerCase()))
+          .where((service) =>
+              service.name.toLowerCase().contains(enteredKeyword.toLowerCase()))
           .toList();
       setState(() {
         filteredServiceData = results;
@@ -114,16 +117,40 @@ class _ServiceScreenState extends State<ServiceScreen> {
     });
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Navbar(route: () => const HomeScreen()),
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: PageAppBar(pageTitle: 'Buscar Servicios', route: () => const HomeScreen()),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        title: Text(
+          "Servicios",
+          style: GoogleFonts.poppins(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
+        ),
+        iconTheme: const IconThemeData(color: Colors.white),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 5.0),
+            child: IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            ),
+          ),
+        ],
+        centerTitle: true,
+        backgroundColor: colorPrimary,
+        automaticallyImplyLeading: false,
       ),
-
       body: SizedBox(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -388,11 +415,11 @@ class _ServiceScreenState extends State<ServiceScreen> {
           ),
         ),
       ),
-       floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
-          /*Navigator.of(context).push(
-            PageTransitionAnimation(const FormAddMedicine()),
-          );*/
+          Navigator.of(context).push(
+            PageTransitionAnimation(const FormAddService()),
+          );
         },
         child: const Icon(Icons.add),
       ),

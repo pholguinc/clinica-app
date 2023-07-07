@@ -92,33 +92,11 @@ class _FormAddDateState extends State<FormAddDate> {
   // Agregamos la función haciendo una petición
   // al backend de la lista de doctores
 
-  Future<List<dynamic>> fetchDropdownData() async {
-    try {
-      Uri uri = Uri.parse("http://10.0.2.2:3000/doctors");
-      http.Response response = await http.get(uri);
-      if (response.statusCode == 200) {
-        List<dynamic> responseData = jsonDecode(response.body);
-        return responseData;
-      } else {
-        throw Exception('Failed to fetch dropdown data');
-      }
-    } catch (error) {
-      // ignore: avoid_print
-      print('Error: $error');
-      throw Exception('Failed to fetch dropdown data');
-    }
-  }
-
   // Hacemos llamado a las funciones definidas
 
   @override
   void initState() {
     super.initState();
-    fetchDropdownData().then((data) {
-      setState(() {
-        dropdownOptions = data;
-      });
-    });
   }
 
   @override
