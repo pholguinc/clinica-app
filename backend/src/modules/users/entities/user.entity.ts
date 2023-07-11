@@ -1,8 +1,9 @@
-import { PrimaryGeneratedColumn, Column, Entity } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, Entity, OneToMany } from 'typeorm';
 import { DateAt } from '../../../database/date-at.entity';
 import { JoinColumn, OneToOne } from 'typeorm';
 
 import { Exclude } from 'class-transformer';
+import { Date } from '../../date/entities/date.entity';
 
 @Entity({ name: 'users' })
 export class User {
@@ -39,4 +40,7 @@ export class User {
 
   @Column(() => DateAt, { prefix: false })
   register: DateAt;
+
+  @OneToMany(() => Date, (date) => date.user)
+  dates: Date[];
 }
