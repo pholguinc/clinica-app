@@ -14,6 +14,7 @@ import configSchema from './config/configSchema';
 import { HistoryModule } from './modules/history/history.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { DoctorsModule } from './modules/doctors/doctors.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -32,6 +33,7 @@ import { AuthModule } from './auth/auth.module';
     HistoryModule,
     UsersModule,
     AuthModule,
+    DoctorsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

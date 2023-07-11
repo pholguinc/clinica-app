@@ -1,8 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:frontend/screens/home_screen.dart';
 import 'package:frontend/screens/login_screen.dart';
-import 'package:frontend/widgets/home_content.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class IntroScreen extends StatefulWidget {

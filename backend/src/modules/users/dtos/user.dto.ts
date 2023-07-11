@@ -14,16 +14,35 @@ export class CreateUserDto {
   @ApiProperty({ description: 'the email of user' })
   readonly email: string;
 
-
   @IsString()
   @ApiProperty({ description: 'the email of user' })
   readonly name: string;
 
   @IsString()
+  @ApiProperty()
+  readonly lastname_pater: string;
+
+  @IsString()
+  @ApiProperty()
+  readonly lastname_mater: string;
+
+  @IsString()
+  @ApiProperty()
+  readonly num_doc: string;
+
+  @IsString()
+  @ApiProperty()
+  readonly phone: string;
+
+  @IsString()
+  @ApiProperty()
+  readonly address: string;
+
+  @IsString()
   @IsNotEmpty()
   @Length(6)
   @ApiProperty()
-  readonly password: string;
+  password: string;
 
   @IsNotEmpty()
   @ApiProperty()

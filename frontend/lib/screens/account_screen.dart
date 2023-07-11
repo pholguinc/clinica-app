@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/screens/home_screen.dart';
 import '../models/account.dart';
 import '../widgets/account_title.dart';
 import '../widgets/avatar_card.dart';
-import '../widgets/page_app_bar.dart';
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
 

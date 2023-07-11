@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/screens/search_screen.dart';
-import '../widgets/home_content.dart';
 import 'account_screen.dart';
 import 'date_screen.dart';
 

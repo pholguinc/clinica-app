@@ -1,10 +1,8 @@
 
 import 'dart:convert';
-
-
 import 'package:frontend/screens/modules/medicines/model/medicine_model.dart';
-import 'package:http/http.dart' as http;
-
+import 'package:http/http.dart' 
+as http;
 class MedicineService {
   static Future<bool> deleteData(String medicineId) async {
     final url = "http://10.0.2.2:3000/medicines/$medicineId";
@@ -47,5 +45,6 @@ class MedicineService {
 
     return medicine;
   }
+  
  
 }

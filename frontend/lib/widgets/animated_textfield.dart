@@ -6,13 +6,15 @@ class AnimatedTextField extends StatefulWidget {
   final Widget? suffix;
   final bool obscureText;
   final TextEditingController textCtrl;
+  final FormFieldValidator<String>? validator;
 
   const AnimatedTextField({
     Key? key,
     required this.label,
     required this.suffix,
     this.obscureText = false,
-    required this.textCtrl,
+    required this.textCtrl, 
+    required this.validator,
   }) : super(key: key);
 
   @override
@@ -49,7 +51,7 @@ class _AnimatedTextFieldState extends State<AnimatedTextField>
     super.initState();
   }
 
-  @override
+    @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -64,16 +66,21 @@ class _AnimatedTextFieldState extends State<AnimatedTextField>
         ),
         child: CustomPaint(
           painter: CustomAnimateBorder(alpha.value),
-          child: TextField(
-            focusNode: focusNode,
-            obscureText: widget.obscureText,
-            controller: widget.textCtrl,
-            decoration: InputDecoration(
-              label: Text(widget.label),
-              border: InputBorder.none,
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              suffixIcon: widget.suffix,
+          child: Form(
+            // Wrap the TextField with Form
+            child: TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              focusNode: focusNode,
+              obscureText: widget.obscureText,
+              controller: widget.textCtrl,
+              decoration: InputDecoration(
+                labelText: widget.label,
+                border: InputBorder.none,
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                suffixIcon: widget.suffix,
+              ),
+              validator: widget.validator, // Set the validator function
             ),
           ),
         ),

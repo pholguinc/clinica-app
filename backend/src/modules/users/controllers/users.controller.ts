@@ -7,6 +7,7 @@ import {
   Put,
   Delete,
   ParseIntPipe,
+  Query,
 } from '@nestjs/common';
 
 import { UsersService } from '../services/users.service';
@@ -21,6 +22,17 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @Get('role-user')
+  findAllUserRole() {
+    return this.usersService.findAllByUserRole('user');
+  }
+
+  @Get('role-doctor')
+  findAllDoctorRole() {
+    return this.usersService.findAllByDoctorRole('doctor');
+  }
+
+ 
   @Get(':id')
   get(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.findOne(id);

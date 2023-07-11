@@ -3,13 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/animations/page_transition_animation.dart';
 import 'package:frontend/constants.dart';
 import 'package:frontend/screens/modules/medicines/model/medicine_model.dart';
-import 'package:frontend/screens/home_screen.dart';
 import 'package:frontend/screens/modules/medicines/service/medicine_service.dart';
 import 'package:frontend/screens/modules/medicines/view/form_medicine_add_screen.dart';
 import 'package:frontend/screens/modules/medicines/view/form_medicine_put_screen.dart';
 import 'package:frontend/utils/alerts.dart';
-import 'package:frontend/widgets/nav_bar.dart';
-import 'package:frontend/widgets/page_app_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MedicineScreen extends StatefulWidget {

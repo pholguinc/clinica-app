@@ -65,6 +65,7 @@ dependencies:
   retrofit: ^4.0.1
   logger: ^1.4.0
   flutter_modular: ^5.0.3
+  stepper_flutter_form: ^1.0.2+1
 
 
 

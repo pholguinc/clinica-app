@@ -7,13 +7,8 @@ import 'package:frontend/screens/modules/services/service/service_service.dart';
 import 'package:frontend/screens/modules/services/view/form_service_add_screen.dart';
 import 'package:frontend/screens/modules/services/view/form_service_put_screen.dart';
 import 'package:frontend/utils/alerts.dart';
-import 'package:frontend/widgets/home_content.dart';
-import 'package:frontend/widgets/page_app_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 
-import '../../../../widgets/nav_bar.dart';
-import '../../../home_screen.dart';
 
 class ServiceScreen extends StatefulWidget {
   const ServiceScreen({super.key});

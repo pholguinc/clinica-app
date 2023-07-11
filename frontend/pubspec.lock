@@ -829,6 +829,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
+  stepper_flutter_form:
+    dependency: "direct main"
+    description:
+      name: stepper_flutter_form
+      sha256: "4e55fa74000a6a30fa157b7fcd508cb7ba04ff118cbd196d31d389c96b6a67ae"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2+1"
   stream_channel:
     dependency: transitive
     description:

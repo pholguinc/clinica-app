@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/constants.dart';
-import 'package:frontend/screens/home_screen.dart';
 import 'package:frontend/screens_details/date_details.dart';
 import 'package:frontend/widgets/home_content.dart';
 import 'package:frontend/widgets/nav_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import '../widgets/page_app_bar.dart';
 
 class DateScreen extends StatefulWidget {
   const DateScreen({Key? key}) : super(key: key);

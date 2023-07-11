@@ -38,7 +38,6 @@ class _FormMedicinePutScreenState extends State<FormMedicinePutScreen>
   final descriptionController = TextEditingController();
 
   final PickedFile? imageFile = null;
-  late List<DoctorModel> doctorData;
   final formKey = GlobalKey<FormState>();
   final Logger logger = Logger();
 

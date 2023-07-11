@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/screens/form_date_screen.dart';
 import 'package:frontend/screens/modules/consulting-room/view/c_room_screen.dart';
+import 'package:frontend/screens/modules/doctors/view/doctor_screen.dart';
 import 'package:frontend/screens/modules/services/view/service_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:logger/logger.dart';
@@ -43,7 +44,7 @@ class HomeContent extends StatelessWidget {
                 subtitle: Padding(
                   padding: const EdgeInsets.only(left: 30),
                   child: Text(
-                   'Ahora está como "${role}"',
+                   'Ahora está como "$role"',
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           color: Colors.white54,
                         ),
@@ -131,7 +132,7 @@ class HomeContent extends StatelessWidget {
                     logger.d('Button tapped!');
                   },
                   child: itemDashboard(context, 'Contactos', Icons.phone,
-                      Colors.pinkAccent, 40, () => const FormAddDate()),
+                      Colors.pinkAccent, 40, () => const DoctorScreen()),
                 ),
               ],
             ),

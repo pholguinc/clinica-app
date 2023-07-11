@@ -7,6 +7,7 @@ class DoctorModel {
   final String image;
   final String description;
 
+
   DoctorModel({
     required this.id,
     required this.name,

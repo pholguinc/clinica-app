@@ -396,7 +396,6 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                   if (statuses[Permission.storage]!.isGranted == true) {
                     photoCamera(ImageSource.gallery);
                   } else {
-
                     logger.e("Error");
                   }
                 },

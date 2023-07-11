@@ -19,6 +19,14 @@ export class UsersService {
     return this.userRepo.find();
   }
 
+  findAllByUserRole(role: string) {
+    return this.userRepo.find({ where: { role: 'user' } });
+  }
+
+  findAllByDoctorRole(role: string) {
+    return this.userRepo.find({ where: { role: 'doctor' } });
+  }
+
   async findOne(id: number) {
     const user = await this.userRepo.findOneBy({ id });
     if (!user) {
@@ -37,6 +45,10 @@ export class UsersService {
 
   async update(id: number, changes: UpdateUserDto) {
     const user = await this.findOne(id);
+    if (changes.password) {
+      const hashedPassword = await bcrypt.hash(changes.password, 10);
+      changes.password = hashedPassword;
+    }
     this.userRepo.merge(user, changes);
     return this.userRepo.save(user);
   }

@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:frontend/screens/home_screen.dart';
-import 'package:frontend/screens/login_screen.dart';
-import 'package:frontend/screens/modules/medicines/view/medicine_screen.dart';
 import 'package:frontend/screens/splash_screen.dart';
-import 'package:frontend/widgets/home_content.dart';
 
 /*
 Iniciamos la aplicación

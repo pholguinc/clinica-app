@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/constants.dart';
 import 'package:frontend/models/text_field_form.dart';
-import 'package:frontend/screens/home_screen.dart';
-import 'package:frontend/screens/modules/medicines/view/medicine_screen.dart';
 import 'package:frontend/screens/modules/services/view/service_screen.dart';
 import 'package:frontend/widgets/alerts/error_alert.dart';
 import 'package:frontend/widgets/alerts/success_alert.dart';
-import 'package:frontend/widgets/home_content.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:convert';
 import 'dart:async';

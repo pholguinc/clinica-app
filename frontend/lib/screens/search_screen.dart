@@ -3,10 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:frontend/models/doctor_model.dart';
 import 'package:frontend/screens/doctor_profile_screen.dart';
-import 'package:frontend/screens/home_screen.dart';
 import 'package:frontend/widgets/home_content.dart';
 import 'package:frontend/widgets/nav_bar.dart';
-import 'package:frontend/widgets/page_app_bar.dart';
 import 'package:http/http.dart' as http;
 
 class SearchScreen extends StatefulWidget {
