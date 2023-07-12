@@ -1,5 +1,12 @@
+import { AppointmentDate } from '../../date/entities/date.entity';
 import { DateAt } from '../../../database/date-at.entity';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'consulting_room' })
 export class ConsultingRoom {
@@ -17,4 +24,7 @@ export class ConsultingRoom {
 
   @Column(() => DateAt, { prefix: false })
   register: DateAt;
+
+  @OneToMany(() => AppointmentDate, (date) => date.consultingRoom)
+  dates: AppointmentDate[];
 }

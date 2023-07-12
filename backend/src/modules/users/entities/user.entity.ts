@@ -1,9 +1,14 @@
-import { PrimaryGeneratedColumn, Column, Entity, OneToMany } from 'typeorm';
+import { ConsultingRoom } from './../../consulting-room/entities/consulting-room.entity';
+import {
+  PrimaryGeneratedColumn,
+  Column,
+  Entity,
+  OneToMany,
+  ManyToOne,
+} from 'typeorm';
 import { DateAt } from '../../../database/date-at.entity';
-import { JoinColumn, OneToOne } from 'typeorm';
-
 import { Exclude } from 'class-transformer';
-import { Date } from '../../date/entities/date.entity';
+import { AppointmentDate } from '../../date/entities/date.entity';
 
 @Entity({ name: 'users' })
 export class User {
@@ -41,6 +46,6 @@ export class User {
   @Column(() => DateAt, { prefix: false })
   register: DateAt;
 
-  @OneToMany(() => Date, (date) => date.user)
-  dates: Date[];
+  @OneToMany(() => AppointmentDate, (date) => date.consultingRoom) // Cambia el nombre de la clase "Date" a "AppointmentDate"
+  dates: AppointmentDate[]; //
 }

@@ -47,17 +47,9 @@ void extractUserRole() {
         mainAxisSize: MainAxisSize.max,
         children: [
           Expanded(
-            child: screens[0],
+            child: HomeContent(role: role),
           ),
         ],
-      ),
-       bottomNavigationBar: BottomNavigation(
-        currentIndex: 0,
-        onTabChange: (index) {
-          setState(() {
-            
-          });
-        },
       ),
     );
   }

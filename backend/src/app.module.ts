@@ -15,6 +15,7 @@ import { HistoryModule } from './modules/history/history.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { DoctorsModule } from './modules/doctors/doctors.module';
+import { TypeDateModule } from './modules/type-date/type-date.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -34,6 +35,7 @@ import { DoctorsModule } from './modules/doctors/doctors.module';
     UsersModule,
     AuthModule,
     DoctorsModule,
+    TypeDateModule,
   ],
   controllers: [AppController],
   providers: [AppService],
