@@ -8,17 +8,12 @@ import { UsersService } from '../../modules/users/services/users.service';
 
 @Controller('auth')
 export class AuthController {
-  constructor(
-    private authService: AuthService,
-    private usersService: UsersService,
-  ) {}
+  constructor(private authService: AuthService) {}
 
   @UseGuards(AuthGuard('local'))
   @Post('login')
   async login(@Req() req) {
     const user = req.user as User;
-    const userProfile = await this.usersService.findOne(user.id);
-    const token = this.authService.generateJWT(userProfile);
-    return { userProfile, token };
+    return this.authService.generateJWT(user);
   }
 }

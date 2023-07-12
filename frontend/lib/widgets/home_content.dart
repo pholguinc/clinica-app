@@ -3,143 +3,163 @@ import 'package:frontend/screens/form_date_screen.dart';
 import 'package:frontend/screens/modules/consulting-room/view/c_room_screen.dart';
 import 'package:frontend/screens/modules/doctors/view/doctor_screen.dart';
 import 'package:frontend/screens/modules/services/view/service_screen.dart';
+import 'package:frontend/widgets/nav_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:logger/logger.dart';
 
 import '../constants.dart';
 import '../screens/modules/medicines/view/medicine_screen.dart';
 
-class HomeContent extends StatelessWidget {
+class HomeContent extends StatefulWidget {
   final String role;
-  const HomeContent({ Key? key, required this.role}) : super(key: key);
+  const HomeContent({Key? key, required this.role}) : super(key: key);
 
+  @override
+  State<HomeContent> createState() => _HomeContentState();
+}
+
+class _HomeContentState extends State<HomeContent> {
+  var currentPage = DrawerSections.dashboard;
   @override
   Widget build(BuildContext context) {
     final Logger logger = Logger();
-
     return Scaffold(
-        body: ListView(
-      padding: EdgeInsets.zero,
-      children: [
-        Container(
-          height: 160, // Increase the height to accommodate the content
-          decoration: const BoxDecoration(
-            color: colorPrimary,
-            borderRadius: BorderRadius.only(bottomRight: Radius.circular(50)),
-          ),
-          child: Column(
-            children: [
-              const SizedBox(height: 60),
-
-              ListTile(
-                title: Padding(
-                  padding: const EdgeInsets.only(top: 15, left: 30),
-                  child: Text(
-                    'Bienvenido',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: Colors.white,
-                        ),
-                  ),
-                ),
-                subtitle: Padding(
-                  padding: const EdgeInsets.only(left: 30),
-                  child: Text(
-                   'Ahora está como "$role"',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: Colors.white54,
-                        ),
-                  ),
-                ),
-                trailing: const CircleAvatar(
-                  radius: 50,
-                  backgroundImage:
-                      AssetImage('assets/images/doctor-avatar.jpg'),
-                ),
-              ), // Adjust the height as needed
-            ],
-          ),
-        ),
-        Container(
-          color: colorPrimary,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+      
+      body: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          Container(
+            height: 120, // Increase the height to accommodate the content
             decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(100))),
-            child: GridView.count(
-              shrinkWrap: true,
-              crossAxisCount: 2,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 30,
+              color: colorPrimary,
+              borderRadius: BorderRadius.only(bottomRight: Radius.circular(50)),
+            ),
+
+            child: Column(
               children: [
-                GestureDetector(
-                  onTap: () {
-                    // Add your onTap functionality here
-                    logger.d('Button tapped!');
-                  },
-                  child: itemDashboard(
-                    context,
-                    'Medicinas',
-                    Icons.medication_liquid,
-                    const Color.fromARGB(255, 201, 51, 228),
-                    40,
-                    () =>
-                        const MedicineScreen(), // Pass a callback function that returns the desired screen
+                const SizedBox(height: 5),
+                ListTile(
+                  title: Padding(
+                    padding: const EdgeInsets.only(top: 15, left: 30),
+                    child: Text(
+                      'Bienvenido',
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            color: Colors.white,
+                          ),
+                    ),
+                  ),
+                  subtitle: Padding(
+                    padding: const EdgeInsets.only(left: 30),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Ahora está como "${widget.role}"',
+                          style:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: Colors.white54,
+                                  ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  trailing: const CircleAvatar(
+                    radius: 50,
+                    backgroundImage:
+                        AssetImage('assets/images/doctor-avatar.jpg'),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    // Add your onTap functionality here
-                    logger.d('Button tapped!');
-                  },
-                  child: itemDashboard(context, 'Citas', Icons.date_range,
-                      Colors.deepOrange, 40, () => const FormAddDate()),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    // Add your onTap functionality here
-                    logger.d('Button tapped!');
-                  },
-                  child: itemDashboard(context, 'Servicios', Icons.room_service,
-                      Colors.brown, 40, () => const ServiceScreen()),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    // Add your onTap functionality here
-                    logger.d('Button tapped!');
-                  },
-                  child: itemDashboard(
-                      context,
-                      'Consultorios',
-                      Icons.local_hospital,
-                      Colors.blue,
-                      40,
-                      () => const CroomScreen()),
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: itemDashboard(
-                      context,
-                      'Historia Clínica',
-                      Icons.library_books,
-                      Colors.green,
-                      40,
-                      () => const MedicineScreen()),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    // Add your onTap functionality here
-                    logger.d('Button tapped!');
-                  },
-                  child: itemDashboard(context, 'Contactos', Icons.phone,
-                      Colors.pinkAccent, 40, () => const DoctorScreen()),
-                ),
+                // Adjust the height as needed
               ],
             ),
           ),
-        )
-      ],
-    ));
+          Container(
+            color: colorPrimary,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 70),
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius:
+                      BorderRadius.only(topLeft: Radius.circular(100))),
+              child: GridView.count(
+                shrinkWrap: true,
+                crossAxisCount: 2,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 30,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      // Add your onTap functionality here
+                      logger.d('Button tapped!');
+                    },
+                    child: itemDashboard(
+                      context,
+                      'Medicinas',
+                      Icons.medication_liquid,
+                      const Color.fromARGB(255, 201, 51, 228),
+                      40,
+                      () =>
+                          const MedicineScreen(), // Pass a callback function that returns the desired screen
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      // Add your onTap functionality here
+                      logger.d('Button tapped!');
+                    },
+                    child: itemDashboard(context, 'Citas', Icons.date_range,
+                        Colors.deepOrange, 40, () => const FormAddDate()),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      // Add your onTap functionality here
+                      logger.d('Button tapped!');
+                    },
+                    child: itemDashboard(
+                        context,
+                        'Servicios',
+                        Icons.room_service,
+                        Colors.brown,
+                        40,
+                        () => const ServiceScreen()),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      // Add your onTap functionality here
+                      logger.d('Button tapped!');
+                    },
+                    child: itemDashboard(
+                        context,
+                        'Consultorios',
+                        Icons.local_hospital,
+                        Colors.blue,
+                        40,
+                        () => const CroomScreen()),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: itemDashboard(
+                        context,
+                        'Historia Clínica',
+                        Icons.library_books,
+                        Colors.green,
+                        40,
+                        () => const MedicineScreen()),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      // Add your onTap functionality here
+                      logger.d('Button tapped!');
+                    },
+                    child: itemDashboard(context, 'Contactos', Icons.phone,
+                        Colors.pinkAccent, 40, () => const DoctorScreen()),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 
   Widget itemDashboard(
@@ -230,4 +250,66 @@ class HomeContent extends StatelessWidget {
       ),
     );
   }
+Widget drawerList() {
+    return Container(
+      padding: const EdgeInsets.only(top: 15),
+      child: Column(children: [
+        menuItem(1, "Dashboard", Icons.dashboard_outlined,
+            currentPage == DrawerSections.dashboard ? true : false),
+        menuItem(1, "Dashboard", Icons.dashboard_outlined,
+            currentPage == DrawerSections.dashboard ? true : false),
+        menuItem(1, "Dashboard", Icons.dashboard_outlined,
+            currentPage == DrawerSections.dashboard ? true : false),
+        menuItem(1, "Dashboard", Icons.dashboard_outlined,
+            currentPage == DrawerSections.dashboard ? true : false),
+        menuItem(1, "Dashboard", Icons.dashboard_outlined,
+            currentPage == DrawerSections.dashboard ? true : false),
+        menuItem(1, "Dashboard", Icons.dashboard_outlined,
+            currentPage == DrawerSections.dashboard ? true : false),
+      ]),
+    );
+  }
+
+  Widget menuItem(int id, String title, IconData icon, bool selected) {
+    return Material(
+      color: selected ? Colors.grey[300] : Colors.transparent,
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    HomeContent(role: '')), // Use the DashboardScreen class
+          ).then((value) {
+            setState(() {
+              if (id == 1) {
+                currentPage = DrawerSections.dashboard;
+              }
+            });
+          });
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Row(
+            children: [
+              Expanded(child: Icon(icon, size: 20, color: Colors.black)),
+              Expanded(
+                  flex: 3,
+                  child: Text(
+                    title,
+                    style: const TextStyle(color: Colors.black, fontSize: 16),
+                  ))
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+enum DrawerSections {
+  dashboard,
+  usuarios,
+  servicios,
+  consultiorios,
 }

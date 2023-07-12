@@ -8,7 +8,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'dart:convert';
 import 'dart:async';
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 import 'package:logger/logger.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class FormAddDoctor extends StatefulWidget {
   const FormAddDoctor({Key? key}) : super(key: key);
@@ -19,6 +21,9 @@ class FormAddDoctor extends StatefulWidget {
 
 class _FormAddDoctorState extends State<FormAddDoctor>
     with TickerProviderStateMixin {
+
+  final PickedFile? imageFile = null;
+  final ImagePicker picker = ImagePicker();
   bool backPressed = false;
   late AnimationController controllerToIncreasingCurve;
   late AnimationController controllerToDecreasingCurve;
@@ -59,7 +64,7 @@ class _FormAddDoctorState extends State<FormAddDoctor>
       'name': nameController.text,
       'lastname_pater': lastnamePaterController.text,
       'lastname_mater': lastnameMaterController.text,
-      'num_doc' : numDocController.text,
+      'num_doc': numDocController.text,
       'phone': phoneController.text,
       'address': addressController.text,
       'email': emailController.text,
@@ -68,6 +73,7 @@ class _FormAddDoctorState extends State<FormAddDoctor>
     };
 
     try {
+      
       http.Response response = await http.post(
         Uri.parse(url),
         headers: headers,
@@ -103,6 +109,16 @@ class _FormAddDoctorState extends State<FormAddDoctor>
   // Hacemos llamado a las funciones definidas
   void hideKeyboard() {
     FocusManager.instance.primaryFocus?.unfocus();
+  }
+
+  void photoCamera(ImageSource source) async {
+    final pickedFile = await picker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      setState(() {
+        //final imageFile = PickedFile(pickedFile.path);
+      });
+    }
   }
 
   @override
@@ -208,12 +224,44 @@ class _FormAddDoctorState extends State<FormAddDoctor>
                                       AutovalidateMode.onUserInteraction,
                                   child: Column(
                                     children: [
+                                      const Positioned(
+                                        top: 150,
+                                        child: Center(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              CircleAvatar(
+                                                  radius: 80,
+                                                  backgroundImage: AssetImage(
+                                                      'assets/images/doctor-avatar.jpg')),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                          top: 190.0,
+                                          left: 250.0,
+                                          child: InkWell(
+                                              onTap: () {
+                                                showModalBottomSheet(
+                                                  context: context,
+                                                  builder: ((builder) =>
+                                                      bottomCameraAsset()),
+                                                );
+                                              },
+                                              child: const Icon(
+                                                  Icons.camera_alt_rounded))),
+                                      const SizedBox(
+                                        height: 30,
+                                      ),
                                       TextFieldForm(
                                         controller: nameController,
                                         fieldName: 'Nombre',
                                         icon: Icons.local_hospital,
                                         prefixIconColor: colorPrimary,
-                                        textValidator: 'Rellene los campos vacíos',
+                                        textValidator:
+                                            'Rellene los campos vacíos',
                                       ),
                                       const SizedBox(height: 20.0),
                                       TextFieldForm(
@@ -221,7 +269,8 @@ class _FormAddDoctorState extends State<FormAddDoctor>
                                         fieldName: 'Apellido Paterno',
                                         icon: Icons.local_hospital,
                                         prefixIconColor: colorPrimary,
-                                        textValidator: 'Rellene los campos vacíos',
+                                        textValidator:
+                                            'Rellene los campos vacíos',
                                       ),
                                       const SizedBox(height: 20.0),
                                       TextFieldForm(
@@ -229,7 +278,8 @@ class _FormAddDoctorState extends State<FormAddDoctor>
                                         fieldName: 'Apellido Materno',
                                         icon: Icons.local_hospital,
                                         prefixIconColor: colorPrimary,
-                                        textValidator: 'Rellene los campos vacíos',
+                                        textValidator:
+                                            'Rellene los campos vacíos',
                                       ),
                                       const SizedBox(height: 20.0),
                                       TextFieldForm(
@@ -237,7 +287,8 @@ class _FormAddDoctorState extends State<FormAddDoctor>
                                         fieldName: 'Número de documento',
                                         icon: Icons.local_hospital,
                                         prefixIconColor: colorPrimary,
-                                        textValidator: 'Rellene los campos vacíos',
+                                        textValidator:
+                                            'Rellene los campos vacíos',
                                       ),
                                       const SizedBox(height: 20.0),
                                       TextFieldForm(
@@ -245,22 +296,26 @@ class _FormAddDoctorState extends State<FormAddDoctor>
                                         fieldName: 'Teléfono',
                                         icon: Icons.local_hospital,
                                         prefixIconColor: colorPrimary,
-                                        textValidator: 'Rellene los campos vacíos',
-                                      ),    
+                                        textValidator:
+                                            'Rellene los campos vacíos',
+                                      ),
                                       const SizedBox(height: 20.0),
                                       TextFieldForm(
                                         controller: addressController,
                                         fieldName: 'Dirección',
                                         icon: Icons.local_hospital,
                                         prefixIconColor: colorPrimary,
-                                        textValidator: 'Rellene los campos vacíos',
-                                      ),                                  const SizedBox(height: 20.0),
+                                        textValidator:
+                                            'Rellene los campos vacíos',
+                                      ),
+                                      const SizedBox(height: 20.0),
                                       TextFieldForm(
                                         controller: emailController,
                                         fieldName: 'Email',
                                         icon: Icons.description,
                                         prefixIconColor: colorPrimary,
-                                        textValidator: 'Rellene los campos vacíos',
+                                        textValidator:
+                                            'Rellene los campos vacíos',
                                       ),
                                       const SizedBox(height: 20.0),
                                       TextFieldForm(
@@ -268,7 +323,8 @@ class _FormAddDoctorState extends State<FormAddDoctor>
                                         fieldName: 'Password',
                                         icon: Icons.description,
                                         prefixIconColor: colorPrimary,
-                                        textValidator: 'Rellene los campos vacíos',
+                                        textValidator:
+                                            'Rellene los campos vacíos',
                                       ),
                                       const SizedBox(height: 20.0),
                                       TextFieldForm(
@@ -276,15 +332,18 @@ class _FormAddDoctorState extends State<FormAddDoctor>
                                         fieldName: 'Role',
                                         icon: Icons.description,
                                         prefixIconColor: colorPrimary,
-                                        textValidator: 'Rellene los campos vacíos',
+                                        textValidator:
+                                            'Rellene los campos vacíos',
                                       ),
                                       const SizedBox(height: 20.0),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: ElevatedButton(
                                           style: ElevatedButton.styleFrom(
-                                            textStyle: const TextStyle(fontSize: 18),
-                                            minimumSize: const Size.fromHeight(45),
+                                            textStyle:
+                                                const TextStyle(fontSize: 18),
+                                            minimumSize:
+                                                const Size.fromHeight(45),
                                             shape: const StadiumBorder(),
                                             fixedSize: const Size(30, 45),
                                             backgroundColor: colorPrimary,
@@ -299,7 +358,8 @@ class _FormAddDoctorState extends State<FormAddDoctor>
                                                           20, // Set the desired width of the CircularProgressIndicator
                                                       height:
                                                           20, // Set the desired height of the CircularProgressIndicator
-                                                      child: CircularProgressIndicator(
+                                                      child:
+                                                          CircularProgressIndicator(
                                                         color: Colors.white,
                                                       ),
                                                     ),
@@ -309,21 +369,25 @@ class _FormAddDoctorState extends State<FormAddDoctor>
                                                 )
                                               : const Text('Registrar'),
                                           onPressed: () async {
-                                            final isValidForm = formKey.currentState!.validate();
+                                            final isValidForm = formKey
+                                                .currentState!
+                                                .validate();
 
                                             if (isValidForm) {
                                               if (isLoading) return;
 
                                               setState(() => isLoading = true);
-                                              await Future.delayed(const Duration(seconds: 2));
+                                              await Future.delayed(
+                                                  const Duration(seconds: 2));
                                               await registerDoctor();
                                               hideKeyboard();
                                               showSuccessNotification(context);
                                               Navigator.pushReplacement(
                                                 context,
                                                 MaterialPageRoute(
-                                                  builder: (BuildContext context) =>
-                                                      const DoctorScreen(),
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          const DoctorScreen(),
                                                 ),
                                               );
                                             } else {
@@ -347,6 +411,69 @@ class _FormAddDoctorState extends State<FormAddDoctor>
             ),
           ),
         ),
+      ),
+    );
+  }
+  Widget bottomCameraAsset() {
+    final Logger logger = Logger();
+    return Container(
+      height: 100,
+      width: MediaQuery.of(context).size.width,
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      child: Column(
+        children: <Widget>[
+          const Text('Agregar imagen', style: TextStyle(fontSize: 20.0)),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              InkWell(
+                onTap: () async {
+                  Map<Permission, PermissionStatus> statuses = await [
+                    Permission.camera,
+                  ].request();
+                  if (statuses[Permission.camera]!.isGranted == true) {
+                    photoCamera(ImageSource.camera);
+                  } else {
+                    logger.e("Error");
+                  }
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  child: const Row(
+                    children: <Widget>[
+                      Icon(Icons.camera, size: 40.0),
+                      SizedBox(width: 8.0),
+                      Text("Camera"),
+                    ],
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () async{
+                  Map<Permission, PermissionStatus> statuses = await [
+                    Permission.storage,
+                  ].request();
+                  if (statuses[Permission.storage]!.isGranted == true) {
+                    photoCamera(ImageSource.gallery);
+                  } else {
+                    logger.e("Error");
+                  }
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  child: const Row(
+                    children: <Widget>[
+                      Icon(Icons.image, size: 40.0),
+                      SizedBox(width: 8.0),
+                      Text("Gallery"),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
